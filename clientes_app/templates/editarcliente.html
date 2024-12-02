@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!--la tarjeta card-->
+        <div class="row"> <!-- la fila -->
+                <div class="card"> <!--tajeta-->
+                    <div class="card-body">
+                        <form action="/editarCliente/" method="POST"> {% csrf_token %} <!--formulario-->
+
+                            <div class="form-group">
+                                <input type="text" id="numid" name="numid" class="form-control"
+                                value="{{misclientes.id}}" min="1" max="10" readonly reqired>
+                            </div>
+            
+                            <div class="form-group py-3">
+                                <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                                value="{{misclientes.nombre}}" maxLenght="100" reqired>
+                            </div>
+            
+                            <div class="form-group py-2">
+                                <input type="text" id="txtemail" name="txtemail" class="form-control"
+                                value="{{misclientes.email}}" maxLenght="100" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <input type="text" id="numcelular" name="numcelular" class="form-control"
+                                value="{{misclientes.celular}}" min="1" max="10" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                                value="{{misclientes.direccion}}" maxLenght="100" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <input type="text" id="numpedidos" name="numpedidos" class="form-control"
+                                value="{{misclientes.pedidos}}" min="1" max="10" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <input type="date" id="txtfecha_inicio" name="txtfecha_inicio" class="form-control"
+                                value="{{misclientes.fecha_inicio}}" maxLenght="100" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form><!--formulario-->
+                    </div>
+                </div>
+
+        <!--fin de la tarjeta card-->
+
+    </div> <!--columna-->
+
+</div> <!--la fila-->
+{% endblock %}
