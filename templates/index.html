@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}<title> Mi tienda Daniela López</title>{% endblock titulo %}
+{% block cuerpo %}
+<div class="d-flex flex column justfy-content-center align-items-center">
+    <h1 class="mt-4 mb-4">Mi tienda de bolsas</h1>
+</div>
+<center>
+<img class="w-50" src="{% static "img/bolsas.jpg" %}" alt="Trulli" width="400" height="400"/>
+</center>
+{% endblock cuerpo %}
