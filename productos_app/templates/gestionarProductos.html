@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+{% load static %}
+<div class="row"> <!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"> <!-- columna izquierda -->
+    <div class="card"> <!--tajeta-->
+        <div class="card-body">
+            <form action="/registrarProducto/" method="POST"> {% csrf_token %} <!--formulario-->
+                <div class="form-group">
+                    <input type="text" id="numid" name="numid" class="form-control"
+                    placeholder="id" minLenght="6" maxLenght="6" reqired>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    placeholder="Nombre " maxLenght="100" reqired>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="numprecio" name="numprecio" class="form-control"
+                    value="1" min="1" max="9" reqired>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtmarca" name="txtmarca" class="form-control"
+                    placeholder="Marca" maxLenght="100" reqired>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="numstock" name="numstock" class="form-control"
+                    value="1" min="1" max="9" reqired>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtdescripcion" name="txtdescripcion " class="form-control"
+                    placeholder="Descripcion" maxLenght="100" reqired>
+                </div>
+
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--formulario-->
+        </div>
+    </div> <!--tajeta-->
+</div> <!-- columna izquierda-->
+
+<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6"> <!-- columna derecha -->
+    <h1>Listado de productos<h1>
+        <img class="w-50" src="{% static "img/producto.jpg" %}" alt="Trulli" width="400" height="400"/>
+        <div class="table-responsive"> <!--tabla responsiva-->
+            <table class="table table-striped">
+                <thead>
+                    <tr>  
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Tamaño</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in misproductos %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.id}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.precio}}</td>
+                    <td>{{m.marca}}</td>
+                    <td>{{m.tamano}}</td>
+                    <td>{{m.stock}}</td>
+                    <td>{{m.descripcion}}</td>
+                    <td> <a href="seleccionarProducto/{{m.id}}" class="btn btn-info">Editar</a> </td> 
+                    <td> <a href="borrarProducto/{{m.id}}" class="btn btn-danger">Borrar</a> </td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+    </div><!--tabla responsiva-->
+</div> <!-- columna derecha -->
+
+</div> <!-- la fila -->
+    {% endblock %}

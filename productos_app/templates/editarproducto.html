@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <!--la tarjeta card-->
+        <div class="row"> <!-- la fila -->
+                <div class="card"> <!--tajeta-->
+                    <div class="card-body">
+                        <form action="/editarProducto/" method="POST"> {% csrf_token %} <!--formulario-->
+                            <div class="form-group">
+                                <input type="text" id="numid" name="numid" class="form-control"
+                                placeholder="id" minLenght="6" maxLenght="6" reqired>
+                            </div>
+
+                            <div class="form-group py-3">
+                                <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                                placeholder="Nombre " maxLenght="100" reqired>
+                            </div>
+            
+                            <div class="form-group py-2">
+                                <input type="text" id="numprecio" name="numprecio" class="form-control"
+                                value="1" min="1" max="9" reqired>
+                            </div>
+            
+                            <div class="form-group py-3">
+                                <input type="text" id="txtmarca" name="txtmarca" class="form-control"
+                                placeholder="Marca" maxLenght="100" reqired>
+                            </div>
+
+                            <div class="form-group py-2">
+                                <input type="text" id="numstock" name="numstock" class="form-control"
+                                value="1" min="1" max="9" reqired>
+                            </div>
+            
+                            <div class="form-group py-3">
+                                <input type="text" id="txtdescripcion" name="txtdescripcion " class="form-control"
+                                placeholder="descripcion" maxLenght="100" reqired>
+                            </div>
+ 
+                            <div class="form-group py-2">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form><!--formulario-->
+                    </div>
+                </div>
+
+        <!--fin de la tarjeta card-->
+
+    </div> <!--columna-->
+
+</div> <!--la fila-->
+{% endblock %}
